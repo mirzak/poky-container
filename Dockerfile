@@ -22,6 +22,9 @@ FROM crops/yocto:$BASE_DISTRO-base
 
 USER root
 
+RUN DEBIAN_FRONTEND=noninteractive apt update \
+    && apt-get --no-install-recommends install -y bc git-lfs bison sharutils rsync
+
 ADD https://raw.githubusercontent.com/crops/extsdk-container/master/restrict_useradd.sh  \
         https://raw.githubusercontent.com/crops/extsdk-container/master/restrict_groupadd.sh \
         https://raw.githubusercontent.com/crops/extsdk-container/master/usersetup.py \
